@@ -1,7 +1,7 @@
 package model
 
 type User struct {
-	ID			uint		`gorm:"primaryKey"`
+	ID			int		`gorm:"primaryKey"`
 	Name 		string
 	Username 	string		`gorm:"unique"`
 	Email 		string		`gorm:"unique"`
@@ -11,6 +11,6 @@ type User struct {
 }
 
 type Avatar struct {
-	ID		uint	`gorm:"primaryKey"`
+	ID		int	`gorm:"primaryKey"`
 	Users	[]User	`gorm:"foreignKey:AvatarID;"`
 }

@@ -1,25 +1,31 @@
 package model
 
 type Realms struct {
-	ID       uint 				`gorm:"primaryKey"`
-	AdminID  uint
-	Admin    User             	`gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
-	Elements []RealmElements 	`gorm:"foreignKey:RealmID;"`
+	ID       int `gorm:"primaryKey"`
+	AdminID  int
+	Admin    User            `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
+	Elements []RealmElements `gorm:"foreignKey:RealmID;"`
+	Blocked  string
+	SpawnX   int
+	SpawnY   int
 }
 
 type Elements struct {
-	ID     uint 				`gorm:"primaryKey"`
-	Height int
-	Width  int
-	Realms  []RealmElements 	`gorm:"foreignKey:ElementID;"`
+	ID         int `gorm:"primaryKey"`
+	Animated   bool
+	Filename   string
+	HeightBlox int
+	WidthBlox  int
+	Frames     int
+	Realms     []RealmElements `gorm:"foreignKey:ElementID;"`
 }
 
 type RealmElements struct {
-	ID        uint 		`gorm:"primaryKey"`
+	ID        int `gorm:"primaryKey"`
 	X         int
 	Y         int
-	RealmID   uint
-	Realm     Realms    `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
-	ElementID uint     
+	RealmID   int
+	Realm     Realms `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+	ElementID int
 	Element   Elements `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }

@@ -71,6 +71,7 @@ func (u *UserService) SignUser(code string) (string,error) {
 	if tokenResponse.AccessToken == "" {
 		return "", errors.New("no access token in response")
 	}
-
+	// Get email from access token and sign user using jwt and send jwt and realm names and ids as response
+	// JWT will contain his id
 	return tokenResponse.AccessToken, nil
 }

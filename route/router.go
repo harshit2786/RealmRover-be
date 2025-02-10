@@ -18,7 +18,8 @@ func NewRouter(u *handler.UserHandler) http.Handler {
 		AllowedOrigins:   []string{"http://localhost:5173", "http://localhost:5173"},
 		AllowCredentials: true,
 	})
-
+	// Create Map
+	// Get Map
 	handler := c.Handler(r)
 	return handler
 }
